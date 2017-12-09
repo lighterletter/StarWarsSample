@@ -1,5 +1,9 @@
 package com.lighterletter.www.starwarsthing;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * https://swapi.co/api/people/?format=json&page=1
  */
@@ -38,4 +42,30 @@ public class Constants {
             "edited: \"2014-12-20T21:17:56.891000Z\",\n" +
             "url: \"https://swapi.co/api/people/1/\"\n" +
             "}";
+
+    /**
+     * Sample of how you would create a json object.
+     *
+     * @return
+     */
+    public String getLukeJSON(){
+        JSONObject luke = new JSONObject();
+        try {
+            luke.put("name","Luke Skywalker");
+            luke.put("height","172");
+            luke.put("mass","77");
+            luke.put("films", new JSONArray()
+                    .put("string 1")
+                    .put("string 2")
+                    .put("string 3"));
+            luke.put("species",
+                    new JSONArray()
+                            .put("human"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return luke.toString();
+    }
+
 }
